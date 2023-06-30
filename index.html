@@ -39,15 +39,21 @@
     </button>
     <div class="container mt-2">
       <div class="row">
-        <div class="col-sm-12 mb-3">
-          <img src="./Screenshot 2023-06-30 090735.png" />
-          <h2>For better experience allow us to find your location</h2>
+        <div class="col-sm-12 col=lg-4 d-flex justify-content-center mt-2">
+                    <div class="card" style="width: 400px">
+            <img src="./Screenshot 2023-06-30 090735.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h2 class="text-center">For better experience allow us to find your location</h2>
+              <button onclick="getLocation()" class="cen">Show My Location</button> 
+              <p id="position"></p><br/>
+              <button type="button" class="btn btn-outline-light btn-lg mt-5">
+                <a href="./api.html">Next</a>
+              </button>
+            </div>
+          </div>
 
-          <button onclick="getLocation()">Show My Location</button> <br />
 
-          <button type="button" class="btn btn-outline-light btn-lg mt-5">
-            <a href="./api.html">Next</a>
-          </button>
+          
           <p id="position"></p>
           <script>
             const x = document.getElementById("position");
