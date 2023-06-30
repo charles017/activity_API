@@ -43,7 +43,7 @@
             <input
               type="name"
               class="form-control"
-              id="fullName"
+              id="fname"
               placeholder="enter name"
             />
           </div>
@@ -54,7 +54,7 @@
             <input
               type="email"
               class="form-control"
-              id="emailAdd"
+              id="age"
               placeholder="enter email"
             />
           </div>
@@ -64,10 +64,27 @@
             >
             <textarea
               class="form-control"
-              id="exampleFormControlTextarea1"
+              id="course"
               rows="10"
               placeholder="tips and feedbacks"
             ></textarea>
+          </div>
+          <div class="right">
+            <input
+              type="button"
+              value="Add to localStorage"
+              onclick="add_local()"
+            />
+            <input
+              type="button"
+              value="Show localStorage"
+              onclick="show_local()"
+            />
+          </div>
+
+          <div class="display">
+            <label for="display"> Display </label> <br />
+            <textarea id="display" name="display" row="10"> </textarea>
           </div>
         </div>
       </div>
@@ -88,35 +105,60 @@
         <div class="col-lg-3"></div>
       </div>
     </div>
+    <script>
+      function myFunction() {
+        window.history.back();
+      }
+    </script>
+    <script>
+      function add_local() {
+        const display = {};
+        display.fname = document.getElementById("fname").value;
+        display.age = document.getElementById("age").value;
+        display.course = document.getElementById("course").value;
+
+        window.localStorage.setItem("display", JSON.stringify(display));
+      }
+
+      function show_local() {
+        let _display = JSON.parse(localStorage.getItem("display"));
+        document.getElementById("fname").value = _display.fname;
+        document.getElementById("age").value = _display.age;
+        document.getElementById("course").value = _display.course;
+        document.getElementById("display").value = Object.values(_display);
+      }
+    </script>
+
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
 
     <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
 
     <script>
-      var chatbox = document.getElementById('fb-customer-chat');
+      var chatbox = document.getElementById("fb-customer-chat");
       chatbox.setAttribute("page_id", "105819699232433");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
     <!-- Your SDK code -->
     <script>
-      window.fbAsyncInit = function() {
+      window.fbAsyncInit = function () {
         FB.init({
-          xfbml            : true,
-          version          : 'v17.0'
+          xfbml: true,
+          version: "v17.0",
         });
       };
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+      })(document, "script", "facebook-jssdk");
     </script>
 
     <script

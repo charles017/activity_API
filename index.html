@@ -26,7 +26,7 @@
     <button
       type="button"
       class="btn btn-outline-light btn-lg"
-      onclick="history.back()"
+      onclick="myFunction()"
     >
       back_API
     </button>
@@ -37,16 +37,48 @@
     >
       forward_API
     </button>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 col-lg-6 mb-3">
           <img src="./Screenshot 2023-06-30 090735.png" height="50%" />
-          <button type="button" class="btn btn-outline-light btn-lg mx-5">
+        </div>
+        <div class="col-sm-12 col-lg-6 mb-3 align-content-center">
+          <h2> For better experience allow us to find your location</h2>
+
+          <button onclick="getLocation()">Show My Location</button> <br>
+
+          <button type="button" class="btn btn-outline-light btn-lg mt-5">
             <a href="./api.html">Next</a>
           </button>
+          <p id="position"> </p>
+          <script> 
+          const x = document.getElementById("position");
+          
+          function getLocation () {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(showPosition);
+              } else {
+                  x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+          }
+      
+          function showPosition (position) {
+              x.innerHTML = "Latitude: " + position.coords.latitude + 
+              "<br> Longitude: " + position.coords.longitude;
+          }
+          </script>
+          <br> <br>
         </div>
       </div>
     </div>
+    <button type="button" class="btn btn-outline-light btn-lg mx-5">
+      <a href="./api.html">Next</a>
+    </button>
+    <script>
+      function myFunction() {
+        window.history.back();
+      }
+    </script>
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
 
